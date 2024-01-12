@@ -47,7 +47,7 @@ def load(data, year):
 def etl(**context):
     year = context['execution_date'].year
     date_from = dt.date(year, 1, 1)
-    date_to = dt.date(year + 1, 1, 1) - dt.timedelta(day=1)
+    date_to = dt.date(year + 1, 1, 1) - dt.timedelta(days=1)
     load(transform(extract(date_from, date_to), year), year)
 
 
@@ -74,7 +74,7 @@ with DAG(
     with TaskGroup('Загрузка_данных_в_stage_слой') as data_to_stage:
 
         load_data = PythonOperator(
-            task_id=f'Получение_календаря',
+            task_id=f'Получение_данных из REST API',
             python_callable=etl,
         )
 
