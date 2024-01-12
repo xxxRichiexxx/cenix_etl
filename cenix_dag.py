@@ -60,9 +60,9 @@ default_args = {
     'retry_delay': dt.timedelta(minutes=30),
 }
 with DAG(
-        'calendar',
+        'cenix_dag',
         default_args=default_args,
-        description='Получение данных производственного календаря.',
+        description='Получение результата парсинга цен ЗЧ.',
         start_date=days_ago(1),
         schedule_interval='@daily',
         catchup=True,
