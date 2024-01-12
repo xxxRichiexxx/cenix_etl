@@ -74,7 +74,7 @@ with DAG(
     with TaskGroup('Загрузка_данных_в_stage_слой') as data_to_stage:
 
         load_data = PythonOperator(
-            task_id=f'Получение_данных из REST API',
+            task_id=f'Получение_данных_из_REST_API',
             python_callable=etl,
         )
 
